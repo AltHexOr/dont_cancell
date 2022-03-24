@@ -25,7 +25,7 @@ jobs:
         if: always() && success()
         run: |
           echo terraform apply
-          sleep 10
+          sleep 15
   
   Release:
     needs: Deploy
@@ -33,5 +33,5 @@ jobs:
     steps:
       - name: Releasing
         run: |
-          echo So... what's up next?
+          echo So... whats up next?
           delay 3
