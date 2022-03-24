@@ -20,7 +20,7 @@ jobs:
         run: |
           echo terraform init, fmt and validate
           sleep 10
-          exit 1
+          exit 0
       - name: Terraform apply
         if: always() && success()
         run: |
