@@ -3,29 +3,34 @@ on:
   push:
 
 jobs:
-  set-up-environment:
+  Build:
     runs-on: ubuntu-latest
     steps:
-      - name: Setting up environment
+      - name: Build
         run: |
           echo Hello... we are preparing the environment.
           sleep 5
-          exit 1
+          exit 0
 
-  applying-changes:
-    needs: set-up-environment
+  Deploy:
+    needs: Build
     runs-on: ubuntu-latest
     steps:
-      - name: Applying changes on the environment
+      - name: Init fmt and validate
         run: |
-          echo Last job failed but Im running this anyways...
+          echo terraform init, fmt and validate
           sleep 10
+          exit 1
+      - name: Terraform apply
+        if: always() && success()
+        run: |
+          echo terraform apply
   
-  say-bye:
-    needs: applying-changes
+  Release:
+    needs: Deploy
     runs-on: ubuntu-latest
     steps:
-      - name: What happens next?
+      - name: Releasing
         run: |
           echo So... what's up next?
           delay 3
