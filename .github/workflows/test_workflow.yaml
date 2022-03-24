@@ -25,6 +25,7 @@ jobs:
         if: always() && success()
         run: |
           echo terraform apply
+          sleep 10
   
   Release:
     needs: Deploy
