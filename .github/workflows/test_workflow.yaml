@@ -21,7 +21,7 @@ jobs:
         run: |
           echo terraform init, fmt and validate
           sleep 10
-          exit 0
+          exit 1
       - name: Terraform apply
         run: |
           echo terraform apply
