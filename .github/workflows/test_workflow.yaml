@@ -14,13 +14,12 @@ jobs:
 
   applying-changes:
     needs: set-up-environment
-    if: always()
     runs-on: ubuntu-latest
     steps:
       - name: Applying changes on the environment
         run: |
           echo Last job failed but Im running this anyways...
-          sleep 3
+          sleep 10
   
   say-bye:
     needs: applying-changes
