@@ -1,0 +1,30 @@
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  set-up-environment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setting up environment
+        run: |
+          echo 'Hello... we are preparing the environment.'
+          sleep 5
+          exit 1
+
+  applying-changes:
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Applying changes on the environment
+        run: |
+          echo 'Last job failed but I'm running this anyways...'
+          sleep 3
+  
+  say-bye:
+    runs-on: ubuntu-latest
+    steps:
+      - name: What happens next?
+        run: |
+          echo 'So... what's up next?'
+          delay 3
